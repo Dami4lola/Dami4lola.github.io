@@ -1,0 +1,131 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #4CAF50;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Customer List */
+.customer-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.customer-list li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.customer-link {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+}
+
+.customer-link:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.customer-name {
+    font-weight: bold;
+}
+
+.customer-balance {
+    color: #4CAF50;
+}
+
+/* Add Customer Form */
+.add-customer-form {
+    margin-top: 40px;
+}
+
+.add-customer-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-customer-form input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.add-customer-form input:focus {
+    border-color: #4CAF50;
+}
+
+.add-customer-form button {
+    padding: 12px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-customer-form button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .customer-list ul {
+        padding-left: 10px;
+    }
+}
