@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 from data_handler import load_data, save_data, Customer, Account
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 # Load customers on startup
 customers = load_data()
