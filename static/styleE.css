@@ -1,0 +1,106 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.account-balance {
+    font-size: 0.9em;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+/* Customer Info Section */
+.customer-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Forms Section */
+.forms {
+    margin-top: 20px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section form input,
+.form-section form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.form-section form button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.form-section form button:hover {
+    background-color: #45a049;
+}
+
+/* Orders Section */
+.orders {
+    margin-top: 30px;
+}
+
+.orders ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.orders li {
+    margin-bottom: 15px;
+}
+
+/* Back Link */
+a {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1em;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.delete-section {
+    text-align: center;
+    margin-top: 20px;
+}
+.delete-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: #d9534f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c9302c;
+}
