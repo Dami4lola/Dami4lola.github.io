@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faces Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        .face-section {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+            opacity: 0.95;
+            transition: opacity 0.2s ease-out;
+        }
+
+        .face-section.visible {
+            opacity: 1;
+        }
+
+        .face-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scroll-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 50px;
+            z-index: 10;
+        }
+
+        .button-container button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .button-container button:hover {
+            transform: scale(1.1);
+        }
+
+        .button-container img {
+            width: 250px;
+            height: auto;
+            display: block;
+        }
+
+        /* Special styling for face9 buttons */
+        .face-section:nth-child(9) .button-container {
+            bottom: 270px;
+        }
+
+        .face-section:nth-child(9) .button-container img {
+            width: 450px;
+        }
+
+        .button-container button.wrong {
+            filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1000%) hue-rotate(330deg) brightness(100%) contrast(100%);
+        }
+
+        .button-container button.correct {
+            filter: none;
+        }
+
+        .button-container button.correct.clicked {
+            filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+        }
+
+        .message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 24px;
+            z-index: 100;
+            display: none;
+        }
+
+        .error-message {
+            background: rgba(255, 0, 0, 0.8);
+        }
+
+        .success-message {
+            background: rgba(0, 255, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="message error-message">Wrong choice!</div>
+    <div class="message success-message">Correct!</div>
+    <div class="scroll-container">
+        <section class="face-section">
+            <img src="Images/Face1.png" alt="Face 1">
+        </section>
+        <section class="face-section">
+            <img src="Images/Face2.png" alt="Face 2">
+        </section>
+        <section class="face-section">
+            <img src="Images/face3.png" alt="Face 3">
+            <div class="button-container">
+                <button><img src="Images/Button1.png" alt="Button 1"></button>
+                <button><img src="Images/BUtton2.png" alt="Button 2"></button>
+                <button class="correct"><img src="Images/Button3.png" alt="Button 3"></button>
+            </div>
+        </section>
+        <section class="face-section">
+            <img src="Images/face4.png" alt="Face 4">
+            
+        </section>
+        <section class="face-section">
+            <img src="Images/face5.png" alt="Face 5">
+            <div class="button-container">
+                <button><img src="Images/Button4.png" alt="Button 4"></button>
+                <button><img src="Images/BUtton5.png" alt="Button 5"></button>
+                <button class="correct"><img src="Images/Button6.png" alt="Button 6"></button>
+            </div>
+        </section>
+        <section class="face-section">
+            <img src="Images/face6.png" alt="Face 6">
+        </section>
+        <section class="face-section">
+            <img src="Images/face7.png" alt="Face 7">
+            <div class="button-container">
+                <button><img src="Images/Button7.png" alt="Button 7"></button>
+                <button><img src="Images/BUtton8.png" alt="Button 8"></button>
+                <button class="correct"><img src="Images/Button9.png" alt="Button 9"></button>
+            </div>
+        </section>
+        <section class="face-section">
+            <img src="Images/face8.png" alt="Face 8">
+        </section>
+        <section class="face-section">
+            <img src="Images/face9.png" alt="Face 9">
+            <div class="button-container">
+                <button><img src="Images/Button100.png" alt="Button 10"></button>
+                <button><img src="Images/BUtton100.png" alt="Button 11"></button>
+            </div>
+        </section>
+        <section class="face-section">
+            <img src="Images/face10.png" alt="Face 10">
+        </section>
+        <section class="face-section">
+            <img src="Images/face11.png" alt="Face 11">
+        </section>
+    </div>
+
+    <script>
+        // Add visible class to sections when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        document.querySelectorAll('.face-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Create error sound
+        const errorSound = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU' + 
+            '...'); // This is a placeholder for the actual error sound base64
+
+        // Handle button clicks
+        document.querySelectorAll('.button-container button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.classList.contains('correct')) {
+                    // Correct choice
+                    this.classList.add('clicked');
+                    const successMessage = document.querySelector('.success-message');
+                    successMessage.style.display = 'block';
+                    
+                    // Get current section and find next section
+                    const currentSection = this.closest('.face-section');
+                    const nextSection = currentSection.nextElementSibling;
+                    
+                    // Remove color and scroll to next section after delay
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                        successMessage.style.display = 'none';
+                        if (nextSection) {
+                            nextSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 3000);
+                } else {
+                    // Wrong choice
+                    this.classList.add('wrong');
+                    errorSound.play();
+                    
+                    // Show error message
+                    const errorMessage = document.querySelector('.error-message');
+                    errorMessage.style.display = 'block';
+                    
+                    // Remove color and error message after delay
+                    setTimeout(() => {
+                        this.classList.remove('wrong');
+                        errorMessage.style.display = 'none';
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
