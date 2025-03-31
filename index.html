@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faces Gallery</title>
+    <title>Particle Animation</title>
     <style>
         * {
             margin: 0;
@@ -15,6 +15,11 @@
             font-family: 'Arial', sans-serif;
             background: #000;
             overflow-x: hidden;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .face-section {
@@ -127,6 +132,12 @@
         .success-message {
             background: rgba(0, 255, 0, 0.8);
         }
+
+        canvas {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -155,7 +166,7 @@
             <img src="Images/face5.png" alt="Face 5">
             <div class="button-container">
                 <button><img src="Images/Button4.png" alt="Button 4"></button>
-                <button><img src="Images/Button5.png" alt="Button 5"></button>
+                <button><img src="Images/BUtton5.png" alt="Button 5"></button>
                 <button class="correct"><img src="Images/Button6.png" alt="Button 6"></button>
             </div>
         </section>
@@ -166,7 +177,7 @@
             <img src="Images/face7.png" alt="Face 7">
             <div class="button-container">
                 <button><img src="Images/Button7.png" alt="Button 7"></button>
-                <button><img src="Images/Button8.png" alt="Button 8"></button>
+                <button><img src="Images/BUtton8.png" alt="Button 8"></button>
                 <button class="correct"><img src="Images/Button9.png" alt="Button 9"></button>
             </div>
         </section>
@@ -248,6 +259,23 @@
                 }
             });
         });
+
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size to window size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        // Initial resize
+        resizeCanvas();
+        
+        // Resize on window change
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
     </script>
 </body>
 </html> 
